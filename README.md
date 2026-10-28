@@ -1,6 +1,8 @@
 # Next.js demo
 
-Next.js App Router demo on Google Compute Engine. Edit `app/page.js` and `app/layout.js` to change the site.
+A browser-local toolbox on Google Compute Engine: QR codes, Base64 and URL encoding, SHA-256/SHA-512/MD5 hashes, AES-256-GCM text encryption, JSON formatting, Unix timestamp conversion and UUID v4 generation. Edit `app/page.js` and `app/globals.css` to change the site.
+
+AES ciphertext uses the toolbox-specific `TL2` format with PBKDF2-SHA-256 (210,000 iterations), a random salt and a random nonce. Keep the password safe; this format is not compatible with arbitrary AES tools. MD5 is included for legacy interoperability and is unsuitable for password storage or security verification. The site is currently served over HTTP, so use HTTPS before entering sensitive data: HTTP cannot protect the JavaScript delivered to the browser.
 
 ## Local development
 

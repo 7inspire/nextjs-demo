@@ -1,14 +1,10 @@
+import './globals.css';
+
 export const metadata = {
-  title: 'Next.js on Google Cloud',
-  description: 'A simple Compute Engine demo',
+  title: 'Toolbox — 好用的在线工具箱',
+  description: '二维码、编码转换、哈希、加密与开发常用工具。',
 };
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="zh-CN">
-      <body style={{ margin: 0, fontFamily: 'system-ui, sans-serif', background: '#0b1020', color: '#f8fafc' }}>
-        {children}
-      </body>
-    </html>
-  );
+  return <html lang="zh-CN"><body>{children}</body></html>;
 }
