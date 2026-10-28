@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-# Run on the VM as root. The key is a read-only GitHub deploy key.
+# Run on the VM as root. The repository is public, so no credential is needed.
 [[ $EUID -eq 0 ]] || { echo 'Run with sudo.' >&2; exit 1; }
-repo='git@github.com:7inspire/nextjs-demo.git'
+repo='https://github.com/7inspire/nextjs-demo.git'
 base=/opt/nextjs-demo-releases
 current=/opt/nextjs-demo-current
-key=/root/.ssh/nextjs-demo-deploy
-export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes"
+export GIT_TERMINAL_PROMPT=0
 export NEXT_TELEMETRY_DISABLED=1
 
 exec 9>/run/lock/nextjs-demo-deploy.lock

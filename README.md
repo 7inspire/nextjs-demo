@@ -27,6 +27,6 @@ On the VM, run:
 sudo /usr/local/sbin/deploy-nextjs-demo
 ```
 
-The script clones `main` using a VM-specific read-only deploy key, installs the exact lockfile dependencies, builds a separate release, switches the current symlink, restarts systemd and checks the local HTTP endpoint. A failed build leaves the running release untouched; a failed post-restart health check restores the previous release. Old releases are kept for manual recovery and consume disk space.
+The script clones `main` over HTTPS (the repository is public), installs the exact lockfile dependencies, builds a separate release, switches the current symlink, restarts systemd and checks the local HTTP endpoint. A failed build leaves the running release untouched; a failed post-restart health check restores the previous release. Old releases are kept for manual recovery and consume disk space.
 
 Useful checks: `sudo systemctl status nextjs-demo`, `sudo journalctl -u nextjs-demo -n 100 --no-pager`, and `readlink -f /opt/nextjs-demo-current`. The original site remains at `/opt/nextjs-demo` as a fallback. The deploy script installed at `/usr/local/sbin/deploy-nextjs-demo` must be updated separately if `scripts/deploy.sh` changes.
